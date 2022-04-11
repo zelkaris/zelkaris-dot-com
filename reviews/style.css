@@ -1,0 +1,106 @@
+* {
+    font-family: monospace;
+    font-size: large;
+}
+
+html,
+body {
+    margin: 0;
+
+    background-color: #1F2937;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    padding: 0 64px;
+
+    background-color: #1F2937;
+}
+
+    header > h1 > a,
+    nav > h1 > ul > li > a {
+        color: #F9FAF8;
+        font-size: x-large;
+        text-decoration: none;
+    }
+        header > h1 > a:hover,
+        nav > h1 > ul > li > a:hover {
+            color: #A5A9AF;
+        }
+
+    nav > h1 > ul {
+        display: flex;
+        gap: 2em;
+    }
+        nav > h1 > ul > li {
+            list-style: none;
+        }
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    gap: 2em;
+
+    background-color: #E9E8EB;
+}
+    .content-container {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+    }
+        .preview-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 32px 64px;
+            gap: 2em;
+
+            background-color: #E9E8EB;
+        }
+            table {
+                width: 100%;
+
+                border: 2px solid black;
+                border-collapse: collapse;
+            }
+                thead {
+                    text-align: left;
+                }
+                    th,
+                    td {
+                        padding: 4px;
+
+                        border: 2px solid black;
+                    }
+                
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+
+    padding: 32px 0px;
+    margin: auto;
+}
+    footer > a {
+        color: #F9FAF8;
+        text-decoration: none;
+        font-size: large;
+    }
+        footer > a:hover {
+            color: #A5A9AF;
+        }
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}

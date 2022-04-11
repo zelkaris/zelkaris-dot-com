@@ -1,13 +1,13 @@
-body {
-    display: flex;
-    flex-direction: column;
+* {
+    font-family: monospace;
+    font-size: large;
+}
 
+body {
     margin: 0;
+    height: 100vh;
 
     background-color: #1F2937;
-    font-family: monospace;
-
-    height: 100vh;
 }
 
 header {
@@ -18,23 +18,26 @@ header {
     padding: 0 64px;
 
     background-color: #1F2937;
-    color: #F9FAF8;
 }
 
-nav > h1 > ul {
-    display: flex;
-    gap: 2em;
-}
-    nav > h1 > ul > li {
-        list-style: none;
+    header > h1 > a,
+    nav > h1 > ul > li > a {
+        color: #F9FAF8;
+        font-size: x-large;
+        text-decoration: none;
     }
-        nav > h1 > ul > li > a {
-            text-decoration: none;
-            color: #F9FAF8;
+        header > h1 > a:hover,
+        nav > h1 > ul > li > a:hover {
+            color: #A5A9AF;
         }
-            nav > h1 > ul > li > a:hover {
-                color: #3882F6;
-            }
+
+    nav > h1 > ul {
+        display: flex;
+        gap: 2em;
+    }
+        nav > h1 > ul > li {
+            list-style: none;
+        }
 
 .body-container {
     display: flex;
@@ -42,8 +45,6 @@ nav > h1 > ul {
     flex: 1;
 
     gap: 2em;
-
-    /* background-color: #fff; */
 }
     .content-container {
         display: flex;
@@ -59,7 +60,7 @@ nav > h1 > ul {
             padding: 32px 64px;
             gap: 2em;
 
-            background-color: #E5E7EB;
+            background-color: #E9E8EB;
         }
             .left-preview-container {
                 display: flex;
@@ -74,20 +75,19 @@ nav > h1 > ul {
                 .left-preview-container > p {
                     font-size: large;
                 }
-                .left-preview-container > button {
-                    background-color: #3882F6;
+                .left-preview-container > form > input {
+                    background-color: #FF0000;
                     border: none;
                     border-radius: 4px;
+                    color: #F9FAF8;
+                    font-family: monospace;
+                    font-size: large;
 
                     padding: 8px 16px;
-
-                    width: 128px;
                 }
-                    .left-preview-container > button > a {
-                        color: #F9FAF8;
-                        font-size: large;
-                        font-family: monospace;
-                        text-decoration: none;
+                    .left-preview-container > form > input:hover {
+                        cursor: pointer;
+                        background-color: #CC0000;
                     }
             .right-preview-container {
                 display: flex;
@@ -105,16 +105,29 @@ nav > h1 > ul {
         .review-text-container > p {
             font-size: large;
     }
+            .review-text-container > p:first-child {
+                opacity: 50%;
+            }
 
 footer {
-    text-align: center;
-    color: #E5E7EB;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
 
-    padding: 2em;
+    padding: 32px 0px;
 }
+    footer > a {
+        color: #F9FAF8;
+        text-decoration: none;
+        font-size: large;
+    }
+        footer > a:hover {
+            color: #A5A9AF;
+        }
 
-/* SCREEN SIZE ADJUSTMENTS */
-@media screen and (max-width: 639px) {
+/*  *****   SCREEN SIZE ADJUSTMENTS *****  */
+/* Replaces video embed with link to video for screen sizes < 460px width */
+@media screen and (max-width: 460px) {
     header {
         flex-direction: column;
         align-items: center;
@@ -130,27 +143,94 @@ footer {
         .left-preview-container,
         .right-preview-container {
             align-items: center;
+            text-align: center;
 
             width: 100%;
+        }
+            .subscribe-button,
+            .yt-embed {
+                display: none;
+            }
+}
+/* 0px to 766px - moves video below description */
+@media screen and (min-width: 461px) and (max-width: 766px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+        nav > h1 > ul {
+            display: block;
+            text-align: center;
+            padding: 0;
+        }
+    .preview-container {
+        flex-direction: column;
+    }
+        .left-preview-container,
+        .right-preview-container {
+            align-items: center;
+            text-align: center;
+
+            width: 100%;
+        }
+            .yt-video-button {
+                display: none;
+            }
+                .yt-embed {
+                    height: 360px;
+                    width: 100%;
+                }
+}
+/* Adjusts video width based on screen width */
+/* 768px to 1080px */
+@media screen and (min-width: 767px) {
+    .left-preview-container {
+        width: 33%;
+    }
+    .right-preview-container {
+        width: 66%;
+        align-items: center;
+    }
+        .yt-video-button {
+            display: none;
         }
             .yt-embed {
                 height: 360px;
                 width: 100%;
             }
 }
-@media screen and (min-width: 767px) {
+/* 1080px to 1439px */
+@media screen and (min-width: 1079px) {
     .yt-embed {
-        height: 360px;
+        height: 480px;
         width: 100%;
     }
-        
-    @media screen and (min-width: 1079px) {
-        .yt-embed {
-            height: 480px;
-            width: 100%;
+        .yt-video-button {
+            display: none;
         }
-            @media screen and (min-width: 1439px) {
-                .yt-embed {
-                    height: 720px;
-                    width: 100%;
-            }
+}
+/* 1080px to 1440 */
+@media screen and (min-width: 1439px) {
+    .left-preview-container {
+        width: 40%;
+    }
+    .right-preview-container {
+        width: 60%;
+        align-items: center;
+    }
+        .yt-video-button {
+            display: none;
+        }
+            .yt-embed {
+                height: 640px;
+                width: 100%;
+        }
+}
+
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
